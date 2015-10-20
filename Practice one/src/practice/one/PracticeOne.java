@@ -9,42 +9,25 @@ package practice.one;
  *
  * @author xqq
  */
-import java.util.Scanner;
+import java.util.*;
 
 public class PracticeOne {
 
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
-	   int n,m,g,s,b,a=0;
-	   while(sc.hasNext())
+	   int n=sc.nextInt();
+	   int score[] =new int[n];
+	   for(int i=0;i<n;i++)
 	   {
-		   m=sc.nextInt();
-		   n=sc.nextInt();
-		   a=0;
-	   while(m<=n)
-	   {
-		   b=m/100;
-		   s=(m-b*100)/10;
-		   g=m%10;
-		   if(m==b*b*b+s*s*s+g*g*g)
-		   {
-			   a++;
-			   if(a==1)
-			   {
-				   System.out.printf("%d",m);
-			   }
-			   else
-				   System.out.printf(" %d",m);
-			  
-		   }
-		    m++;
+		   int a=sc.nextInt();
+		   int b=sc.nextInt();
+		   int c=sc.nextInt();
+		   score[i]=a+b+c;
 	   }
-	   if(a==0)
-	   {
-		   System.out.printf("no");
-	   }
-	   System.out.printf("\n");
-	   
-	   }
+	   Arrays.sort(score);
+	  for(int i=n-1;i>=0;i--)
+	  {
+		  System.out.println(score[i]);
+	  }
 	}
 }
