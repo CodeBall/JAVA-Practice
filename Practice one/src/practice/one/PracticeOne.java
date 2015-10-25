@@ -10,24 +10,30 @@ package practice.one;
  * @author xqq
  */
 import java.util.*;
+class shulie{
 
+    int fn(int n){
+        int y = 3,fn1 = 1,fn2 = 0;
+        int fn0 = 0;
+        for(y = 3;y <= n;y++){
+            fn0 = 4 * fn1 - 5 * fn2;
+            fn2 = fn1;
+            fn1 = fn0;
+        }
+        return fn0;
+    }
+}
 public class PracticeOne {
 
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
-	   int n=sc.nextInt();
-	   int score[] =new int[n];
-	   for(int i=0;i<n;i++)
-	   {
-		   int a=sc.nextInt();
-		   int b=sc.nextInt();
-		   int c=sc.nextInt();
-		   score[i]=a+b+c;
-	   }
-	   Arrays.sort(score);
-	  for(int i=n-1;i>=0;i--)
-	  {
-		  System.out.println(score[i]);
-	  }
+                shulie sl;
+                sl = new shulie();
+                int N = sc.nextInt();
+                while(N > 0){
+                    int x = sc.nextInt();
+                    System.out.println(sl.fn(x));
+                    N--;
+                }
 	}
 }
