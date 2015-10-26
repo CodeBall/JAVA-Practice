@@ -10,42 +10,46 @@ package practice.one;
  * @author xqq
  */
 import java.util.*;
-class shulie{
-    double[] dxs = new double[301];
-    void qz(){
-        double f = 1.0;
-        for(int i = 2;i < 301;i++){
-            if(i % 2 == 0)
-                f = f - 1/(double)i;
-            else
-                f = f + 1/(double)i;
-            dxs[i] = f;
-        }
+class Time{
+    private int hour,minute,second;
+    public void setHour(int n){
+        if(n > 12 || n < 0)
+            n = 12;
+        hour = n;
     }
-    double fh(int n){
-        return dxs[n];
+    public void setMinute(int n){
+        if(n > 60 || n < 0)
+            n = 0;
+        minute = n;
+    }
+    public void setSecond(int n){
+        if(n > 60 || n < 0)
+            n = 0;
+        second = n;
+    }
+    public void setTime(int x,int y,int z){
+        if(x > 12 || x < 0)
+            x = 12;
+        if(y > 60 || y < 0)
+            y = 0;
+        if(z > 60 || z < 0)
+            z = 0;
+        hour = x;
+        minute = y;
+        second = z;
+    }
+    public void showTime(){
+        System.out.printf("%02d:%02d:%02d\n",hour,minute,second);
     }
 }
 public class PracticeOne {
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
-                shulie sl;
-                sl = new shulie();
-                sl.qz();
-                while(sc.hasNext()){
-                    int n = sc.nextInt();
-                    double num;
-                    if(n == 1)
-                        num = 1.00;
-                    else if(n == 0)
-                        num = 0;
-                    else if(n > 300)
-                    {
-                        num = 0.69;
-                    }
-                    else
-                        num = sl.fh(n);
-                    System.out.printf("%.2f\n",num);
-                }
+                Time time = new Time();
+                int x = sc.nextInt();
+                int y = sc.nextInt();
+                int z = sc.nextInt();
+                time.setTime(x, y, z);
+                time.showTime();
 	}
 }
