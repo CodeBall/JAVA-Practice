@@ -12,24 +12,25 @@ package practice.one;
 import java.util.*;
 import java.math.*;
 class shulie{
-    double[][] zb = new double[100][2];
-    void fz(double x,double y,int i){
-        zb[i][0] = x;
-        zb[i][1] = y;
-    }
-    double num(int N,double R){
-        double sum = 0,PI = 3.1415927;
-        int i = 0;
-        for(i=0;i< N-1;i++){
-        double x=(zb[i][0]-zb[i+1][0])*(zb[i][0]-zb[i+1][0]);
-        double y=(zb[i][1]-zb[i+1][1])*(zb[i][1]-zb[i+1][1]);
-        sum+=Math.sqrt(x+y);
-        }
-        double x0=(zb[0][0]-zb[i][0])*(zb[0][0]-zb[i][0]);
-        double y0=(zb[0][1]-zb[i][1])*(zb[0][1]-zb[i][1]);
-        sum+=Math.sqrt(x0+y0)+2*PI*R;
-        return sum;
-    }
+   int c,k,z,m;
+   void Rect(int length){
+       if(length < 0)
+           length = 0;
+       c = length;
+       k = length;
+       z = 4 * length;
+       m = length * length;
+   }
+   void Rect(int length,int width){
+       if(width < 0)
+           width = 0;
+       if(length < 0)
+           length = 0;
+       c = length;
+       k = width;
+       z = 2 * (length + width);
+       m = length * width;
+   }
 }
 public class PracticeOne {
 
@@ -37,14 +38,38 @@ public class PracticeOne {
 		Scanner sc=new Scanner(System.in);
                 shulie sl;
                 sl = new shulie();
-                int n = sc.nextInt();
-                double r = sc.nextDouble();
-                for(int i = 0;i < n;i++){
-                    double x = sc.nextDouble();
-                    double y = sc.nextDouble();
-                    sl.fz(x,y, i);
-                }
-                    double sum = sl.num(n, r);
-                    System.out.printf("%.2f\n",sum);
+                String st;
+               while(sc.hasNext()){
+                   st = sc.nextLine();
+                   char[] str = st.toCharArray();
+                   int flag = 0,num = 0,a = 0,length = 0,width = 0;
+                   for(int i = 0;i < str.length;i++){
+                       if(str[i] == '-'){
+                           flag = 1;
+                       }
+                       else if(str[i] == ' '){
+                           if(flag == 1)
+                               length = 0;
+                           else
+                               length = num;
+                           flag = 2;
+                           num = 0;
+                       }
+                       else{
+                           a = str[i] - '0';
+                           num = num * 10 + a;
+                       }
+                   }
+                   if(flag == 0)
+                       length = num;
+                   if(flag == 2){
+                       width = num;
+                   }
+                   if(width == 0)
+                   sl.Rect(length);
+                   else
+                       sl.Rect(length, width);
+                   System.out.println(sl.c + " " +sl.k + " " + sl.z + " " + sl.m);
+               }
 	}
 }
