@@ -11,36 +11,41 @@ package practice.one;
  */
 import java.util.*;
 class shulie{
-    int[] xi = new int[16];
-    int[] yi = new int[16];
-    void shuli(int x,int y,int i){
-        xi[i] = x;
-        yi[i] = y;
+    int a1,b1,c1,a2,b2,c2;
+    void fz(int a,int b,int c,int x,int y,int z){
+        a1 = a;b1 = b;c1 = c;a2 = x;b2 = y;c2 = z;
     }
-    int hxy(int n){
-        int chengji = 0;
-        for(int i = 0;i < n;i++){
-            chengji += xi[i] * yi[i];
+    int pd(){
+        if(a1+b1<=c1||a1+c1<=b1||b1+c1<=a1){
+        return 0;
         }
-        return chengji;
+    else if(a2+b2<=c2||a2+c2<=b2||b2+c2<=a2){
+        return 0;
+        }
+    else
+        return 1;
     }
-    int hx(int n){
-        int hex = 0;
-        for(int i = 0;i < n;i++)
-            hex += xi[i];
-        return hex;
-    }
-    int hy(int n){
-        int hey = 0;
-        for(int i = 0;i < n;i++)
-            hey += yi[i];
-        return hey;
-    }
-    int hx2(int n){
-        int hex2 = 0;
-        for(int i = 0;i < n;i++)
-            hex2 = xi[i] * xi[i] + hex2;
-        return hex2;
+    int pdxs(){
+        if(a1 * b2 == a2 * b1 && b1 * c2 == c1 * b2){
+            return 1;
+        }
+        else if(a1 * c2 == a2 * b1 && b1 * b2 == c2 * c1){
+            return 1;
+        }
+        else if(a1 * a2 == b2 * b1 && b1 * c2 == a2 * c1){
+            return 1;
+        }
+        else if(a1 * c2 == b2 * b1 && b1 * a2 == c1 * c2){
+            return 1;
+        }
+        else if(a1 * a2 == b1 * c2 && b1 * b2 == c1 * a2){
+            return 1;
+        }
+        else if(a1 * b2 == c2 * b1 && b1 * c2 == b2 * c1){
+            return 1;
+        }
+        else
+            return 0;
     }
 }
 public class PracticeOne {
@@ -49,22 +54,25 @@ public class PracticeOne {
 		Scanner sc=new Scanner(System.in);
                 shulie sl;
                 sl = new shulie();
-                int n = sc.nextInt();
-                for(int i = 0;i < n;i++){
-                    int x = sc.nextInt();
-                    int y = sc.nextInt();
-                    sl.shuli(x,y,i);
+                int a1,b1,c1,a2,b2,c2;
+                while(sc.hasNext()){
+                    a1 = sc.nextInt();
+                    b1 = sc.nextInt();
+                    c1 = sc.nextInt();
+                    a2 = sc.nextInt();
+                    b2 = sc.nextInt();
+                    c2 = sc.nextInt();
+                    sl.fz(a1, b1, c1, a2, b2, c2);
+                    if(sl.pd() == 1){
+                        if(sl.pdxs() == 1)
+                            System.out.println("YES");
+                        else
+                            System.out.println("NO");
+                    }
+                    else{
+                        System.out.println("NO");
+                    }
                 }
-                int hxy = sl.hxy(n);
-                int hx = sl.hx(n);
-                int hy = sl.hy(n);
-                int hx2 = sl.hx2(n);
-                int fza = n * hxy - hx * hy;
-                int fm = n * hx2 - hx * hx;
-                int fzb = hy * hx2 - hx * hxy;
-                double a = (double)fza / (double)fm;
-                double b = (double)fzb / (double)fm;
-                System.out.printf("%.3f\n",a);
-                System.out.printf("%.3f\n",b);
+                
 	}
 }
