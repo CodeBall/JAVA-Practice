@@ -10,46 +10,56 @@ package practice.one;
  * @author xqq
  */
 import java.util.*;
-class Time{
-    private int hour,minute,second;
-    public void setHour(int n){
-        if(n > 12 || n < 0)
-            n = 12;
-        hour = n;
+class Complex{
+    int real,image;
+    public Complex(int s,int x){
+        real = s;
+        image = x;
     }
-    public void setMinute(int n){
-        if(n > 60 || n < 0)
-            n = 0;
-        minute = n;
+    public void add(int s,int x){
+        real += s;
+        image += x;
     }
-    public void setSecond(int n){
-        if(n > 60 || n < 0)
-            n = 0;
-        second = n;
+    public void sub(int s,int x){
+        real -= s;
+        image -= x;
     }
-    public void setTime(int x,int y,int z){
-        if(x > 12 || x < 0)
-            x = 12;
-        if(y > 60 || y < 0)
-            y = 0;
-        if(z > 60 || z < 0)
-            z = 0;
-        hour = x;
-        minute = y;
-        second = z;
+    public void cheng(int s,int x){
+        int f = image * s + real * x;
+        real = real * s - image * x;
+        image = f;
     }
-    public void showTime(){
-        System.out.printf("%02d:%02d:%02d\n",hour,minute,second);
+    public void show(){
+        if(real == 0 && image == 0)
+            System.out.println("0");
+        else if(real == 0)
+            System.out.println(""+image + "i");
+        else if(image == 0)
+            System.out.println(""+real);
+        else if(image < 0)
+            System.out.println(""+real + image + "i");
+        else
+            System.out.println(""+real + "+" + image + "i");
     }
 }
 public class PracticeOne {
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
-                Time time = new Time();
                 int x = sc.nextInt();
                 int y = sc.nextInt();
-                int z = sc.nextInt();
-                time.setTime(x, y, z);
-                time.showTime();
+               Complex complex = new Complex(x,y);
+               while(sc.hasNext()){
+                   x = sc.nextInt();
+                   y = sc.nextInt();
+                   int z = sc.nextInt();
+                   if(z == 1)
+                       complex.add(x, y);
+                   else if(z == 2)
+                       complex.sub(x, y);
+                   else if(z == 3)
+                       complex.cheng(x, y);
+                   complex.show();
+               }
+               complex.show();
 	}
 }
