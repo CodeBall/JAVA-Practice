@@ -9,108 +9,117 @@ package practice.one;
  *
  * @author xqq
  */
-import java.util.*;
-interface Shape{
-    public double length();
-}
-class Triangle implements Shape{
-    double a,b,c;
-    public void get(double a,double b,double c){
-        this.a = a;
-        this.b = b;
-        this.c = c;
-    }
-    public int pd(){
-        if(a + b <= c || b + c <= a || a + c <= b)
-            return 0;
-        else
-            return 1;
-    }
-    public double length(){
-        return a + b + c;
-    }
-}
-class Rectangle implements Shape{
-    double l,w;
-    public void get(double l,double w){
-        this.l = l;
-        this.w = w;
-    }
-    public double length(){
-        return 2 * (l + w);
-    }
-}
 
-class Circle implements Shape{
-    double r,PI = 3.14;
-    public void get(double r){
-        this.r = r;
-    }
-    public double length(){
-        return 2 * PI * r;
-    }
-}
+//import java.util.*;
+// 
+//public class PracticeOne {
+//    public static void main(String[] args) {
+//         Scanner sc = new Scanner(System.in);
+//           int t = sc.nextInt();
+//           int[][] yanzhi = new int[t+1][3];
+//           for(int i = 0;i < t;i++){
+//               for (int j = 0;j < 2;j++){
+//                   yanzhi[i][j] = sc.nextInt();
+//               }
+//           }
+//           
+//    }
+//}
+//import java.util.Arrays;
+//import java.util.Comparator;
+//
+//public class PracticeOne {
+//    public static void main(String[] args) {
+//        //注意，要想改变默认的排列顺序，不能使用基本类型（int,double, char）
+//        //而要使用它们对应的类
+//        Integer[] a = {9, 8, 7, 2, 3, 4, 1, 0, 6, 5};
+//        //定义一个自定义类MyComparator的对象
+//        Comparator cmp = new MyComparator();
+//        Arrays.sort(a, cmp);
+//        for(int i = 0; i < a.length; i ++) {
+//            System.out.print(a[i] + " ");
+//        }
+//    }
+//}
+////Comparator是一个接口，所以这里我们自己定义的类MyComparator要implents该接口
+////而不是extends Comparator
+//class MyComparator implements Comparator<Integer>{
+//    @Override
+//    public int compare(Integer o1, Integer o2) {
+//        //如果n1小于n2，我们就返回正值，如果n1大于n2我们就返回负值，
+//        //这样颠倒一下，就可以实现反向排序了
+//        if(o1 < o2) { 
+//            return -1;
+//        }else if(o1 > o2) {
+//            return 1;
+//        }else {
+//            return 0;
+//        }
+//    }
+//    
+//}
 
-public class PracticeOne {
-	public static void main(String[] args) {
-            Scanner sc = new Scanner(System.in);
-           Triangle Tr = new Triangle();
-           Rectangle Re = new Rectangle();
-           Circle Ci = new Circle();
-           double num;
-           while(sc.hasNext()){
-               String st = sc.nextLine();
-               char[] str = st.toCharArray();
-               
-               double a = 0,b = 0,c = 01.456;
-               num = 0;
-               int flag = 0,xiao = 0,fu = 0;
-               for(int i = 0;i < str.length;i++){
-                   if(str[i] == '.'){
-                       xiao = 1;
-                   }
-                   else if(str[i] == '-'){
-                       fu = 1;
-                       break;
-                   }
-                   else if(str[i] == ' '){
-                       xiao = 0;
-                       if(flag == 0)
-                           a = num;
-                       else if(flag == 1)
-                           b = num;
-                       flag++;
-                       num = 0;
-                   }
-                   else{
-                       int x = str[i] - '0';
-                       if(xiao == 0)
-                           num = num * 10 + x;
-                       else
-                       {
-                            num = num + x * Math.pow(0.1,xiao);
-                            xiao++;
-                       }
-                   }
-               }
-               if(fu == 1){
-                   System.out.printf("0.00\n");
-               }
-               else if(flag == 0){
-                   a = num;
-                   Ci.get(a);
-                   System.out.printf("%.2f\n", Ci.length());
-               }
-               else if(flag == 1){
-                   b = num;
-                   Re.get(a, b);
-                   System.out.printf("%.2f\n", Re.length());
-               }
-               else if(flag == 2){
-                   c = num;
-                   Tr.get(a, b, c);
-                    System.out.printf("%.2f\n", Tr.length());
+import java.util.ArrayList;  
+import java.util.Collections;  
+import java.util.List;  
+import java.util.Scanner;
+import java.io.*;
+import java.lang.String;
+import java.math.BigDecimal;
+  
+/** 
+ * @function 给String型二维数组的一维排序 
+ * @author ylchou@qq.com 
+ * @date 2013-07-07 
+ */  
+class PracticeOne {  
+    public static void main(String[] args) {  
+        Scanner sc = new Scanner(System.in);
+           int t = sc.nextInt();
+           String[][] arr = new String[t][2];
+           for(int i = 0;i < t;i++){
+               for (int j = 0;j < 2;j++){
+                   arr[i][j] = sc.next();
                }
            }
-	}
-}
+        List<String> list = new ArrayList<String>();  
+        //把二维数组转换为一维数组（一维元素含"\t"）,然后加入到list  
+        for (int i = 0; i < arr.length; i++) {  
+            StringBuffer line = new StringBuffer();  
+            for (int j = 0; j < arr[i].length; j++) {  
+                if(j<arr[i].length-1){  
+                    line.append(arr[i][j]+"\t");  
+                }else if(j==arr[i].length-1){  
+                    line.append(arr[i][j]);  
+                }  
+            }  
+            list.add(line.toString());   
+        }  
+        //排序  
+        Collections.sort(list);  
+        //把list转换为二维数组  
+        for (int i = 0; i < list.size(); i++) {  
+            String[] strSplit = list.get(i).toString().split("\t");  
+            for (int j = 0; j <strSplit.length; j++) {  
+                arr[i][j] = String.valueOf(strSplit[j]);  
+            }  
+        }  
+        //加法计算
+        int i = 0;
+        for (i = 1; i < arr.length; i++) {  
+            if(arr[i-1][0].compareTo(arr[i][0]) < 0)
+                break; 
+        }  
+        if(i == 1)
+           System.out.printf("%d %s\n",i,arr[0][1]);
+        else{
+            BigDecimal b1 = new BigDecimal(arr[0][1]);
+            for(int j = 1;j < i;j++){
+                BigDecimal b2 = new BigDecimal(arr[j][1]);
+                b1 = b1.add(b2);
+            }
+            System.out.printf("%d %s\n",i,b1);
+        }
+        
+    }  
+}  
