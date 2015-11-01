@@ -11,28 +11,41 @@ package practice.one;
  */
 
 import java.util.*;
-  
 
-class PracticeOne {  
+class juxing{
+    int x1,y1,x2,y2;
+    public juxing(int a,int b,int c,int d){
+        x1 = a;
+        x2 = c;
+        y1 = b;
+        y2 = d;
+    }
+    public int pd(int x,int y){
+        if(x > x1 && x < x2){
+            if(y > y1 && y < y2)
+                return 1;
+            else
+                return 0;
+        }
+        else
+            return 0;
+    }
+}
+  class PracticeOne {  
     public static void main(String[] args) {  
         Scanner sc = new Scanner(System.in);
-          while(sc.hasNext()){
-              String str = sc.nextLine();
-              if(str.compareTo("red") == 0)
-                  System.out.println("Rose are red.");
-              else if(str.compareTo("orange") == 0)
-                  System.out.println("Poppies are orange.");
-               else if(str.compareTo("yellow") == 0)
-                  System.out.println("Sunflower are yellow.");
-               else if(str.compareTo("green") == 0)
-                  System.out.println("Grass are green.");
-               else if(str.compareTo("blue") == 0)
-                  System.out.println("Bluebells are blue.");
-               else if(str.compareTo("violet") == 0)
-                  System.out.println("Violets are violet.");
-               else
-                  System.out.println("I don't know about the color " + str + ".");
-          }
-        
+         while(sc.hasNext()){
+             int t = sc.nextInt();
+             int num = 0;
+             juxing point = new juxing(sc.nextInt(),sc.nextInt(),sc.nextInt(),sc.nextInt());
+             for(int i = 0;i < t;i++){
+                 int x = sc.nextInt();
+                 int y = sc.nextInt();
+                 if(point.pd(x, y) == 1)
+                     num++;
+             }
+             System.out.println(num);
+         }
     }  
 }  
+
