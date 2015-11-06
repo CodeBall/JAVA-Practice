@@ -24,7 +24,7 @@ class Cars{
 }
 class keche extends Cars{
     int persons;
-    void keche(int p,int m){
+    keche(int p,int m){
         persons = p;
         setMoney(m);
     }
@@ -35,7 +35,7 @@ class keche extends Cars{
 class pika extends Cars{
     private int persons;
     private double weight;
-    void pi_ka(int p,double t,int m){
+    pika(int p,double t,int m){
         persons = p;
         weight = t;
         super.setMoney(m);
@@ -49,7 +49,7 @@ class pika extends Cars{
 }
 class huo extends Cars{
     private double weight;
-    void huo_che(double t,int m){
+    huo(double t,int m){
         weight = t;
         super.setMoney(m);
     }
@@ -61,18 +61,18 @@ public class PracticeOne {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
                 keche[] K = new keche[10];
-                K[1].keche(5,800);
-                K[2].keche(5,400);
-                K[3].keche(5,800);
-                K[4].keche(51,1300);
-                K[5].keche(55,1500);
+                K[1] = new keche(5,800);
+                K[2] = new keche(5,400);
+                K[3] = new keche(5,800);
+                K[4] = new keche(51,1300);
+                K[5] = new keche(55,1500);
                 pika[] P = new pika[10];
-                P[6].pi_ka(5,0.45,500);
-                P[7].pi_ka(5,2.0,450);
+                P[6] = new pika(5,0.45,500);
+                P[7] = new pika(5,2.0,450);
                 huo[] H = new huo[11];
-                H[8].huo_che(3,200);
-                H[9].huo_che(25,1500);
-                H[8].huo_che(35,2000);
+                H[8] = new huo(3,200);
+                H[9] = new huo(25,1500);
+                H[10] = new huo(35,2000);
 		int t = sc.nextInt();
 		if(t == 1){
                     int pe = 0,mon = 0;
@@ -95,7 +95,15 @@ public class PracticeOne {
                             mon += day * H[id].getMoney();
                         }
                     }
-                    System.out.printf("%d %.2f %d",pe,mon,wei);
+                    System.out.printf("%d ",pe);
+                    if(wei == 0){
+                        System.out.printf("0.00 ");
+                    }
+                    else
+                        System.out.printf("%.2f ", wei);
+                    System.out.printf("%d\n",mon);
                 }
+                else
+                    System.out.println("0 0.00 0");
 	}
 }
