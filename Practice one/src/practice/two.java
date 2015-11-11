@@ -38,27 +38,6 @@ public class two {
                             System.out.printf("%02d:%02d\n",h+1,(h+1)%10*10+(h+1)/10);  
                         }  
                     }  
-//                   int i = 0;
-//                   DecimalFormat df1=new DecimalFormat("00");
-//                   if(h == 23 && m >= 32)
-//                       System.out.println("00:00");
-//                   else{
-//                       String ans1 = null;String ans2 = null;
-//                        for(i = 0;i < 16;i++){
-//                            if(hour[i] >= h && h < hour[i+1]){
-//                                if(m < minute[i]){
-//                                    ans1 = df1.format(hour[i]);
-//                                    ans2 = df1.format(minute[i]);
-//                                }
-//                                else{
-//                                    ans1 = df1.format(hour[i+1]);
-//                                    ans2 = df1.format(minute[i+1]);
-//                                }
-//                                break;
-//                            }
-//                        }
-//                        System.out.println(ans1 + ":" + ans2);
-//                   }
                 }
 	}
 }
