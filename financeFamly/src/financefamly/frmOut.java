@@ -5,6 +5,8 @@
  */
 package financefamly;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author xqq
@@ -31,7 +33,7 @@ public class frmOut extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         because = new javax.swing.JTextField();
         money = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        submit = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -47,12 +49,22 @@ public class frmOut extends javax.swing.JFrame {
 
         jLabel2.setText("支出金额：");
 
-        jButton1.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
-        jButton1.setText("提交");
+        submit.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
+        submit.setText("提交");
+        submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("基本操作");
 
         jMenuItem1.setText("登录");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("退出");
@@ -82,6 +94,11 @@ public class frmOut extends javax.swing.JFrame {
         jMenu2.add(out);
 
         trans.setText("转账");
+        trans.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transActionPerformed(evt);
+            }
+        });
         jMenu2.add(trans);
 
         jMenu1.add(jMenu2);
@@ -101,7 +118,7 @@ public class frmOut extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(submit)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(because, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
                         .addComponent(money)))
@@ -119,7 +136,7 @@ public class frmOut extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(money, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(submit)
                 .addGap(24, 24, 24))
         );
 
@@ -128,19 +145,51 @@ public class frmOut extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
+        //退出事件
+        System.exit(0);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inActionPerformed
         // TODO add your handling code here:
+        //进入收入登记页面
         frmIn frmin = new frmIn();
         this.setVisible(false);
         frmin.setVisible(true);
+        frmin.setLocationRelativeTo(null);
     }//GEN-LAST:event_inActionPerformed
 
     private void outActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outActionPerformed
         // TODO add your handling code here:
-         
+         //进入支出事件页面
     }//GEN-LAST:event_outActionPerformed
+
+    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
+        // TODO add your handling code here:
+        String yy = because.getText();
+        String mon = money.getText();
+        
+        JOptionPane.showMessageDialog(this, "您总共支出了" + mon + "元，这些钱用于" + yy);
+        because.setText(null);
+        money.setText(null);
+    }//GEN-LAST:event_submitActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        //登录事件
+        frmLogin frm = new frmLogin();
+        this.setVisible(false);
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void transActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transActionPerformed
+        // TODO add your handling code here:
+        //进入转账事件页面
+        frmTrans frmt = new frmTrans();
+        this.setVisible(false);
+        frmt.setVisible(true);
+        frmt.setLocationRelativeTo(null);
+    }//GEN-LAST:event_transActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,7 +229,6 @@ public class frmOut extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField because;
     private javax.swing.JMenuItem in;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
@@ -190,6 +238,7 @@ public class frmOut extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JTextField money;
     private javax.swing.JMenuItem out;
+    private javax.swing.JButton submit;
     private javax.swing.JMenuItem trans;
     // End of variables declaration//GEN-END:variables
 }

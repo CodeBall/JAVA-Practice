@@ -70,6 +70,11 @@ public class frmMain extends Menus {
 
         jButton3.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
         jButton3.setText("支出");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
         jButton4.setText("转账");
@@ -81,6 +86,11 @@ public class frmMain extends Menus {
 
         jButton5.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
         jButton5.setText("退出");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("基本操作");
 
@@ -173,6 +183,11 @@ public class frmMain extends Menus {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
+        //进入支出页面
+        frmOut frmo = new frmOut();
+        this.setVisible(false);
+        frmo.setVisible(true);
+        frmo.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -190,7 +205,11 @@ public class frmMain extends Menus {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        
+        //进入收入界面
+         frmIn frmin = new frmIn();
+        this.setVisible(false);
+        frmin.setVisible(true);
+        frmin.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -199,6 +218,7 @@ public class frmMain extends Menus {
         this.setVisible(false);
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
+        frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -206,21 +226,40 @@ public class frmMain extends Menus {
         frmTrans frmt = new frmTrans();
         this.setVisible(false);
         frmt.setVisible(true);
+        frmt.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
+        //进入转账页面
          frmTrans frmt = new frmTrans();
         this.setVisible(false);
         frmt.setVisible(true);
+        frmt.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         frmTrans frmt = new frmTrans();
+        //进入收入页面
+         frmIn frmin = new frmIn();
         this.setVisible(false);
-        frmt.setVisible(true);
+        frmin.setVisible(true);
+        frmin.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        //进入支出页面
+        frmOut frmo = new frmOut();
+        this.setVisible(false);
+        frmo.setVisible(true);
+        frmo.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

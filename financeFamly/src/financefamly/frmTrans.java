@@ -158,6 +158,7 @@ public class frmTrans extends javax.swing.JFrame {
         frmLogin frm = new frmLogin();
         this.setVisible(false);
         frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -170,13 +171,16 @@ public class frmTrans extends javax.swing.JFrame {
         frmIn frmin = new frmIn();
         this.setVisible(false);
         frmin.setVisible(true);
+        frmin.setLocationRelativeTo(null);
     }//GEN-LAST:event_inActionPerformed
 
     private void outActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outActionPerformed
         // TODO add your handling code here:
+        //支出事件
         frmOut frmout = new frmOut();
         this.setVisible(false);
         frmout.setVisible(true);
+        frmout.setLocationRelativeTo(null);
     }//GEN-LAST:event_outActionPerformed
 
     private void transActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transActionPerformed
