@@ -12,18 +12,42 @@ package practice;
 import java.util.Scanner;
 import java.math.*;
 import java.text.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class two {
     public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-               int T = sc.nextInt();
-               BigInteger a,b;
-               for(int i = 1;i <= T;i++){
-                   a = sc.nextBigInteger();
-                   b = sc.nextBigInteger();
-                   System.out.println("Case " + i + ":\n" + a + " + " + b + " = " + a.add(b));
-                   if(i < T)
-                       System.out.println();
-               }
+                while(sc.hasNext()){
+                    int t = sc.nextInt();
+                    List<Integer> list = new ArrayList<Integer>();
+                    for(int i = 0;i < t;i++){
+                        int in = sc.nextInt();
+                        list.add(in);
+                    }
+                    List<Integer> listTemp = new ArrayList<Integer>();
+                    Iterator<Integer> it=list.iterator();
+                    while(it.hasNext()){
+                        int a = it.next();
+                        if(listTemp.contains(a)){
+                            it.remove();
+                        }
+                        else{
+                            listTemp.add(a);
+                        }
+                    }
+                    Collections.sort(list);
+                    int len = list.size(),len1 = 0;
+                    for(Integer i:list){
+                        len1++;
+                        if(len1 < len)
+                        System.out.printf("%d ",i);
+                        else
+                            System.out.println(i);
+                    }
+                }
 	}
 }
+
