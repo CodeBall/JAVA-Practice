@@ -9,36 +9,45 @@ package practice;
  *
  * @author xqq
  */
-import java.util.Scanner;
-import java.math.*;
-import java.text.*;
+import java.util.*;
 
 public class two {
     public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-               int T = sc.nextInt();
-               for(int i = 0;i < T;i++){
-                   String str = sc.next();
-                   String newStr = temp(str);
-                   System.out.println(newStr);
-               }
-	}
-    public static String temp(String oldStr){
-        StringBuffer buffer = new StringBuffer();
-        char[] str = oldStr.toCharArray();
-        for(int i = 0;i < oldStr.length();i++){
-            buffer.append(str[i]);
-            if(str[i] == '-' && i > 0 && i < oldStr.length() - 1){
-                char st = str[i-1];
-                char ed = str[i+1];
-                if(st <= ed && ((st >= 'a' && ed <= 'z') || (st >= 'A' && ed <= 'Z') || (st >= '0' && ed <= '9'))){
-                    buffer.deleteCharAt(buffer.length() - 1);
-                    for(int j = st + 1;j <= ed - 1;j++){
-                        buffer.append((char) j);
+                while(sc.hasNext()){
+                    int T = sc.nextInt();
+                    int n = sc.nextInt();
+                    char[] lei = new char[T];
+                    for(int i = 0;i < T;i++){
+                        lei[i] = sc.next().charAt(0);
                     }
+                    
+                    List[] lists = new List[T];
+                    for(int i = 0;i < T;i++){
+                        lists[i] = new ArrayList();
+                    }
+                    
+                    for(int i = 0;i < n;i++){
+                        String word = sc.next();
+                        for(int j = 0;j < T;j++){
+                            if(word.toUpperCase().charAt(0) == lei[j])
+                                lists[j].add(word);
+                        }
+                    }
+                    
+                    for(int i = 0;i < T;i++){
+                        int size = lists[i].size();
+                        if(size > 0){
+                            for(int j = 0;j < size;j++){
+                                if(j >= 1){
+                                    System.out.print(" ");
+                                }
+                                System.out.print(lists[i].get(j));
+                            }
+                            System.out.println();
+                        }
+                    }
+                    System.out.println();
                 }
-            }
-        }
-        return buffer.toString();
-    }
+	}
 }
