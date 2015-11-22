@@ -14,28 +14,29 @@ import java.util.*;
 public class two {
     public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+                int num = 0;
                 while(sc.hasNext()){
-                    int T = sc.nextInt();
-                    List[] lists = new List[T];
-                    for(int i = 0;i < T;i++){
-                        lists[i] = new ArrayList();
+                    String str = sc.nextLine();
+                    String[] number = str.split("\\D+");
+                    try{
+                    int one = Integer.parseInt(number[0]);
+                    int two = Integer.parseInt(number[1]);
+                    int three = Integer.parseInt(number[2]);
+                    
+                    String[] chars = str.split("\\d+");
+                    char ch = chars[1].charAt(0);
+                    if(ch == '+'){
+                        if(one + two == three)
+                            num++;
                     }
-                    for(int i = 0;i < T;i++){
-                        String Name = sc.next();
-                        String jue = sc.next();
-                        if(jue.equals("woman") || jue.equals("child")){
-                            lists[0].add(Name);
-                        }
-                        else if(jue.equals("man"))
-                            lists[1].add(Name);
-                        else if(jue.equals("captain"))
-                            lists[2].add(Name);
-                    }
-                    for(int i = 0;i < T;i++){
-                        for(int j = 0;j < lists[i].size();j++){
-                            System.out.println(lists[i].get(j));
-                        }
+                    else if(ch == '-'){
+                        if(one - two == three)
+                            num++;
+                    }}
+                    catch(Exception e){
+                        
                     }
                 }
+                System.out.println(num);
 	}
 }
