@@ -16,38 +16,26 @@ public class two {
 		Scanner sc = new Scanner(System.in);
                 while(sc.hasNext()){
                     int T = sc.nextInt();
-                    int n = sc.nextInt();
-                    char[] lei = new char[T];
-                    for(int i = 0;i < T;i++){
-                        lei[i] = sc.next().charAt(0);
-                    }
-                    
                     List[] lists = new List[T];
                     for(int i = 0;i < T;i++){
                         lists[i] = new ArrayList();
                     }
-                    
-                    for(int i = 0;i < n;i++){
-                        String word = sc.next();
-                        for(int j = 0;j < T;j++){
-                            if(word.toUpperCase().charAt(0) == lei[j])
-                                lists[j].add(word);
-                        }
-                    }
-                    
                     for(int i = 0;i < T;i++){
-                        int size = lists[i].size();
-                        if(size > 0){
-                            for(int j = 0;j < size;j++){
-                                if(j >= 1){
-                                    System.out.print(" ");
-                                }
-                                System.out.print(lists[i].get(j));
-                            }
-                            System.out.println();
+                        String Name = sc.next();
+                        String jue = sc.next();
+                        if(jue.equals("woman") || jue.equals("child")){
+                            lists[0].add(Name);
+                        }
+                        else if(jue.equals("man"))
+                            lists[1].add(Name);
+                        else if(jue.equals("captain"))
+                            lists[2].add(Name);
+                    }
+                    for(int i = 0;i < T;i++){
+                        for(int j = 0;j < lists[i].size();j++){
+                            System.out.println(lists[i].get(j));
                         }
                     }
-                    System.out.println();
                 }
 	}
 }
